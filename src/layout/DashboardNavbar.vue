@@ -1,9 +1,9 @@
 <template>
-    <base-nav class="navbar-top navbar-dark"
+    <base-nav class="navbar-top navbar-light"
               id="navbar-main"
               :show-toggle-button="false"
               expand>
-        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+        <form class="navbar-search navbar-search-light form-inline mr-3 d-none d-md-flex ml-lg-auto">
             <div class="form-group mb-0">
                 <base-input placeholder="Search"
                             class="input-group-alternative"

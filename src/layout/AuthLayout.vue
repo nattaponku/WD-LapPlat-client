@@ -1,11 +1,12 @@
 <template>
     <div class="main-content bg-default">
         <!-- Navbar -->
-        <base-nav class="navbar-top navbar-horizontal navbar-dark"
+        <base-nav class="navbar-top navbar-horizontal navbar-light"
                   containerClasses="px-4 container"
                   expand>
             <router-link slot="brand" class="navbar-brand" to="/">
-                <img src="img/brand/white.png"/>
+                <!--img src="img/brand/LogoEGAT(E).jpg"/-->
+                EGAT PV Inverter Dashboard
             </router-link>
 
             <template v-slot="{closeMenu}">
@@ -14,7 +15,7 @@
                     <div class="row">
                         <div class="col-6 collapse-brand">
                             <router-link to="/">
-                                <img src="img/brand/green.png">
+                                <img src="img/brand/LogoEGAT(E).jpg">
                             </router-link>
                         </div>
                         <div class="col-6 collapse-close">
@@ -58,13 +59,13 @@
             </template>
         </base-nav>
         <!-- Header -->
-        <div class="header bg-gradient-success py-7 py-lg-8">
+        <div class="header bg-gradient-egat py-7 py-lg-8">
             <div class="container">
                 <div class="header-body text-center mb-7">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-6">
-                            <h1 class="text-white">Welcome!</h1>
-                            <p class="text-lead text-white">Use these awesome forms to login or create new account in
+                            <h1 class="text-blue">Welcome!</h1>
+                            <p class="text-lead text-blue">Use these awesome forms to login or create new account in
                                 your project for free.</p>
                         </div>
                     </div>
@@ -87,16 +88,16 @@
             <div class="container">
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-6">
-                        <div class="copyright text-center text-xl-left text-muted">
+                        <!--div class="copyright text-center text-xl-left text-muted">
                             &copy; {{year}} <a href="https://www.creative-tim.com" class="font-weight-bold ml-1"
                                                target="_blank">Creative Tim</a>
-                        </div>
+                        </div-->
                     </div>
                     <div class="col-xl-6">
                         <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                            <li class="nav-item">
+                            <!--li class="nav-item">
                                 <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-                            </li>
+                            </li-->
                             <li class="nav-item">
                                 <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About
                                     Us</a>

@@ -101,8 +101,8 @@ $colors: map-merge((
 $default:       #172b4d !default;
 $primary:       #5e72e4 !default;
 $secondary:     #f7fafc !default;
-$success:       $green !default;
-$info:          $teal !default;
+$success:       $green !default; //$green
+$info:          $teal !default; //$teal
 $warning:       $orange !default;
 $danger:        $red !default;
 $light:         $gray-500 !default;
@@ -118,6 +118,7 @@ $youtube:       #cd201f !default;
 $slack:         #3aaf85 !default;
 $dribbble:      #ea4c89 !default;
 $github:        #222222 !default;
+$egat:          #fee152 !default;
 
 $theme-colors: () !default;
 $theme-colors: map-merge((
@@ -131,7 +132,8 @@ $theme-colors: map-merge((
   "white":        $white,
   "neutral":      $white,
   "dark":         $dark,
-  "darker":       $darker
+  "darker":       $darker,
+  "egat":         $egat
 ), $theme-colors);
 
 $brand-colors: () !default;
@@ -144,7 +146,8 @@ $brand-colors: map-merge((
   "youtube":      $youtube,
   "slack":        $slack,
   "dribbble":     $dribbble,
-  "github":       $github
+  "github":       $github,
+  
 ), $brand-colors);
 
 $shape-colors: () !default;
