@@ -12,6 +12,9 @@ export default {
     showTotalByMonth(month) {
         return Api().get('PVTOTALMONTH/' + month)
     },
+    showTotalByYear(year) {
+        return Api().get('PVTOTALYEAR/' + year)
+    },
     post(PV) {
         return Api().post('PV', PV)
     }

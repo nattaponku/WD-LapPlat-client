@@ -17,34 +17,36 @@
                   Today Power
                 </h5>
                 <span class="h2 font-weight-bold mb-0">{{ 
-                  numberWithCommas(this.PpvTodayTotal.toFixed(2))
+                  numberWithCommas(this.PacTodayTotal.toFixed(2))
                 }}</span>
               </div>
             </div>
             <template slot="footer">
-              <div v-if="this.PpvDiffTodayTotal > 0">
-                <span class="text-success mr-2">
-                  <i class="fa fa-arrow-up"></i
-                  >{{
-                      (
-                        (this.PpvDiffTodayTotal / this.PpvYesterdayTotal) *
-                        100
-                      ).toFixed(2)
-                  }}%
-                </span>
-                <span class="text-nowrap">Since yesterday</span>
-              </div>
-              <div v-else>
-                <span class="text-danger mr-2">
-                  <i class="fa fa-arrow-down"></i
-                  >{{
-                      (
-                        (this.PpvDiffTodayTotal / this.PpvYesterdayTotal) *
-                        100
-                      ).toFixed(2)
-                  }}%
-                </span>
-                <span class="text-nowrap">Since yesterday</span>
+              <div v-if="this.PacYesterdayTotal > 0">
+                <div v-if="this.PacDiffTodayTotal > 0">
+                  <span class="text-success mr-2">
+                    <i class="fa fa-arrow-up"></i
+                    >{{
+                        (
+                          (this.PacDiffTodayTotal / this.PacYesterdayTotal) *
+                          100
+                        ).toFixed(2)
+                    }}%
+                  </span>
+                  <span class="text-nowrap">Since yesterday</span>
+                </div>
+                <div v-else>
+                  <span class="text-danger mr-2">
+                    <i class="fa fa-arrow-down"></i
+                    >{{
+                        (
+                          (this.PacDiffTodayTotal / this.PacYesterdayTotal) *
+                          100
+                        ).toFixed(2)
+                    }}%
+                  </span>
+                  <span class="text-nowrap">Since yesterday</span>
+                </div>
               </div>
             </template>
           </stats-card>
@@ -65,34 +67,36 @@
                   Monthly Power
                 </h5>
                 <span class="h2 font-weight-bold mb-0">{{ 
-                  numberWithCommas((this.PpvMonthTotal).toFixed(2))
+                  numberWithCommas((this.PacMonthTotal).toFixed(2))
                 }}</span>
               </div>
             </div>
             <template slot="footer">
-              <div v-if="this.PpvDiffMonthTotal > 0">
-                <span class="text-success mr-2">
-                  <i class="fa fa-arrow-up"></i
-                  >{{
-                      (
-                        (this.PpvDiffMonthTotal / this.PpvLastMonthTotal) *
-                        100
-                      ).toFixed(2)
-                  }}%
-                </span>
-                <span class="text-nowrap">Since Last Month</span>
-              </div>
-              <div v-else>
-                <span class="text-danger mr-2">
-                  <i class="fa fa-arrow-down"></i
-                  >{{
-                      (
-                        (this.PpvDiffMonthTotal / this.PpvLastMonthTotal) *
-                        100
-                      ).toFixed(2)
-                  }}%
-                </span>
-                <span class="text-nowrap">Since Last Month</span>
+              <div v-if="this.PacLastMonthTotal > 0">
+                <div v-if="this.PacDiffMonthTotal > 0">
+                  <span class="text-success mr-2">
+                    <i class="fa fa-arrow-up"></i
+                    >{{
+                        (
+                          (this.PacDiffMonthTotal / this.PacLastMonthTotal) *
+                          100
+                        ).toFixed(2)
+                    }}%
+                  </span>
+                  <span class="text-nowrap">Since Last Month</span>
+                </div>
+                <div v-else>
+                  <span class="text-danger mr-2">
+                    <i class="fa fa-arrow-down"></i
+                    >{{
+                        (
+                          (this.PacDiffMonthTotal / this.PacLastMonthTotal) *
+                          100
+                        ).toFixed(2)
+                    }}%
+                  </span>
+                  <span class="text-nowrap">Since Last Month</span>
+                </div>
               </div>
             </template>
 
@@ -115,34 +119,36 @@
                   Today Gain
                 </h5>
                 <span class="h2 font-weight-bold mb-0">{{ 
-                  numberWithCommas((this.PpvTodayTotal*this.PpvUnitCost).toFixed(2))
+                  numberWithCommas((this.PacTodayTotal*this.PacUnitCost).toFixed(2))
                 }}</span>
               </div>
             </div>
             <template slot="footer">
-              <div v-if="this.PpvDiffTodayTotal > 0">
-                <span class="text-success mr-2">
-                  <i class="fa fa-arrow-up"></i
-                  >{{
-                      (
-                        (this.PpvDiffTodayTotal / this.PpvYesterdayTotal) *
-                        100
-                      ).toFixed(2)
-                  }}%
-                </span>
-                <span class="text-nowrap">Since yesterday</span>
-              </div>
-              <div v-else>
-                <span class="text-danger mr-2">
-                  <i class="fa fa-arrow-down"></i
-                  >{{
-                      (
-                        (this.PpvDiffTodayTotal / this.PpvYesterdayTotal) *
-                        100
-                      ).toFixed(2)
-                  }}%
-                </span>
-                <span class="text-nowrap">Since yesterday</span>
+              <div v-if="this.PacYesterdayTotal > 0">
+                <div v-if="this.PacDiffTodayTotal > 0">
+                  <span class="text-success mr-2">
+                    <i class="fa fa-arrow-up"></i
+                    >{{
+                        (
+                          (this.PacDiffTodayTotal / this.PacYesterdayTotal) *
+                          100
+                        ).toFixed(2)
+                    }}%
+                  </span>
+                  <span class="text-nowrap">Since yesterday</span>
+                </div>
+                <div v-else>
+                  <span class="text-danger mr-2">
+                    <i class="fa fa-arrow-down"></i
+                    >{{
+                        (
+                          (this.PacDiffTodayTotal / this.PacYesterdayTotal) *
+                          100
+                        ).toFixed(2)
+                    }}%
+                  </span>
+                  <span class="text-nowrap">Since yesterday</span>
+                </div>
               </div>
             </template>
             
@@ -168,33 +174,35 @@
                   Monthly Gain
                 </h5>
                 <span class="h2 font-weight-bold mb-0">{{ 
-                  numberWithCommas((this.PpvMonthTotal*this.PpvUnitCost).toFixed(2))
+                  numberWithCommas((this.PacMonthTotal*this.PacUnitCost).toFixed(2))
                 }}</span>
               </div>
             </div>
             <template slot="footer">
-              <div v-if="this.PpvDiffMonthTotal > 0">
-                <span class="text-success mr-2">
-                  <i class="fa fa-arrow-up"></i
-                  >{{
-                      
-                       (
-                        (this.PpvDiffMonthTotal / this.PpvLastMonthTotal) *
-                        100
-                      ).toFixed(2)
-                      
-                  }}%
-                </span>
-                <span class="text-nowrap">Since Last Month</span>
-              </div>
-              <div v-else>
-                <span class="text-danger mr-2">
-                  <i class="fa fa-arrow-down"></i
-                  >{{
-                      (this.PpvLastMonthTotal) 
-                  }}%
-                </span>
-                <span class="text-nowrap">Since Last Month</span>
+              <div v-if="this.PacLastMonthTotal > 0">
+                <div v-if="this.PacDiffMonthTotal > 0">
+                  <span class="text-success mr-2">
+                    <i class="fa fa-arrow-up"></i
+                    >{{
+                        
+                        (
+                          (this.PacDiffMonthTotal / this.PacLastMonthTotal) *
+                          100
+                        ).toFixed(2)
+                        
+                    }}%
+                  </span>
+                  <span class="text-nowrap">Since Last Month</span>
+                </div>
+                <div v-else>
+                  <span class="text-danger mr-2">
+                    <i class="fa fa-arrow-down"></i
+                    >{{
+                        (this.PacLastMonthTotal) 
+                    }}%
+                  </span>
+                  <span class="text-nowrap">Since Last Month</span>
+                </div>
               </div>
             </template>
 
@@ -234,7 +242,7 @@
                 <h6 class="text-uppercase text-muted ls-1 mb-1">
                   Power Generation
                 </h6>
-                <h5 class="h3 mb-0">Day Generation</h5>
+                <h5 class="h3 mb-0">Generation History</h5>
               </div>
               <div class="col">
                 <ul class="nav nav-pills justify-content-end">
@@ -363,6 +371,89 @@ function getColumn(dataSet, propertyName) {
   return dataSet.map((x) => x[propertyName]);
 }
 
+// async function getMonthlyDataArr(monthNumberArr){
+//   var monthDataArr = [];
+//   var i;
+//   for (i=0;i<monthNumberArr.length;i++){
+//     monthDataArr.push((await PVService.showTotalByMonth(monthNumberArr[i]).data));
+//   }
+//   console("monthDataArr = "+monthDataArr);
+//   return monthDataArr;
+// }
+
+function getMonthNumberArr(currentMonthNumber){
+  var monthArr = []
+  var i, element;
+  for(i=0;i<12;i++){
+    if (currentMonthNumber-i <= 0) {
+      element = 12 - Math.abs(currentMonthNumber-i);
+    }else{
+      element = currentMonthNumber-i;
+    }
+    monthArr.push(element)
+  }
+  return monthArr.reverse();
+}
+
+function getYearNumberArr(currentYearNumber){
+  var yearArr = []
+  var i, element;
+  for(i=0;i<5;i++){
+    element = currentYearNumber-i;
+    yearArr.push(element)
+  }
+  return yearArr.reverse();
+}
+
+function getMonthLabelArr(monthArr){
+  var monthLabel = []
+  var i;
+  for (i=0;i<12;i++){
+    switch (monthArr[i]) {
+      case 1:
+        monthLabel.push("Jan");
+        break;
+      case 2:
+        monthLabel.push("Feb");
+        break;
+      case 3:
+        monthLabel.push("Mar");
+        break;
+      case 4:
+        monthLabel.push("Apr");
+        break;
+      case 5:
+        monthLabel.push("May");
+        break;
+      case 6:
+        monthLabel.push("Jun");
+        break;
+      case 7:
+        monthLabel.push("Jul");
+        break;
+      case 8:
+        monthLabel.push("Aug");
+        break;
+      case 9:
+        monthLabel.push("Sep");
+        break;
+      case 10:
+        monthLabel.push("Oct");
+        break;
+      case 11:
+        monthLabel.push("Nov");
+        break;
+      case 12:
+        monthLabel.push("Dec");
+    }
+  }
+  return monthLabel;
+}
+
+// function getYearlyPower(year){
+//   return dataSet.map((x) => x["Pac"])
+// }
+
 
 export default {
   components: {
@@ -400,15 +491,15 @@ export default {
         Epv2_total: 0.0,
         Epv_total: 0.0,
       },
-      PpvMonthTotal: 0,
-      PpvLastMonthTotal: 0,
-      PpvDiffMonthTotal: 0,
+      PacMonthTotal: 0,
+      PacLastMonthTotal: 0,
+      PacDiffMonthTotal: 0,
 
-      PpvTodayTotal: 0,
-      PpvYesterdayTotal: 0,
-      PpvDiffTodayTotal: 0,
+      PacTodayTotal: 0,
+      PacYesterdayTotal: 0,
+      PacDiffTodayTotal: 0,
 
-      PpvUnitCost: 5,
+      PacUnitCost: 5,
 
       bigLineChart: {
         // allData: [
@@ -491,19 +582,19 @@ export default {
       this.bigLineChart.chartData = bigLineChartData;
       this.bigLineChart.activeIndex = index;
 
-      console.log(
-        "Output " + this.PpvTodayTotal + " " + this.PpvDiffTodayTotal
-      );
+      // console.log(
+      //   "Output " + this.PacTodayTotal + " " + this.PacDiffTodayTotal
+      // );
     },
     initTotalCards() {
-      console.log(
-        "initTotalCards",
-        this.PpvMonthTotal,
-        this.PpvDiffMonthTotal,
-        this.PpvTodayTotal,
-        this.PpvDiffTodayTotal,
-        this.PpvUnitCost
-      );
+      // console.log(
+      //   "initTotalCards",
+      //   this.PacMonthTotal,
+      //   this.PacDiffMonthTotal,
+      //   this.PacTodayTotal,
+      //   this.PacDiffTodayTotal,
+      //   this.PacUnitCost
+      // );
     },
   },
   async created() {
@@ -518,48 +609,85 @@ export default {
     // for testing
     // let date = "2020-10-21";
     // this.pv = (await PVService.show(date)).data;
-    // this.bigLineChart.allData = getColumn(this.pv, "Ppv");
+    // this.bigLineChart.allData = getColumn(this.pv, "Pac");
     // this.bigLineChart.allLabels = getColumn(this.pv, "Time");
     // this.bigLineChart.allLabels = getIndexList(this.bigLineChart.allLabels);
 
-    var date = moment("2020-10-20", "YYYY-MM-DD", true);
-    var month = String(date.get("month", "MM") + 1);
+    // var today = moment("2020-10-20", "YYYY-MM-DD", true);
+    var today = moment()
+    var month = today.get("month", "M") + 1;
+    var year = today.get("year", "YYYY");
+    var yesterday = today.clone().subtract("1", "day");
+    var lastMonth = today.clone().subtract("1", "month").get("month", "M") + 1;
 
-    var yesterday = date.clone().subtract("1", "day");
-    var lastMonth = String(
-      date.clone().subtract("1", "month").get("month", "MM") + 1
-    );
-
-    var strDate = date.format("YYYY-MM-DD");
-    var strYesterday = yesterday.format("YYYY-MM-DD");
-    var strMonth = month;
-    var strLastMonth = lastMonth;
+    var strDate = today.format("YYYY-M-DD");
+    var strYesterday = yesterday.format("YYYY-M-DD");
+    var strMonth = String(month);
+    var strLastMonth = String(lastMonth);
+    var strYear = String(year);
 
     console.log("strDate =" + strDate);
-    console.log("strMonth =" + strMonth);
+    console.log("month =" + month);
     console.log("strYesterday =" + strYesterday);
     console.log("strLastMonth =" + strLastMonth);
+    console.log("strYear =" + strYear);
+
+    // call backend for data
     this.pv = (await PVService.showByDate(strDate)).data;
 
     // get pv by date for bigLineChart
-    this.bigLineChart.allData = getColumn(this.pv, "Ppv");
+    this.bigLineChart.allData = getColumn(this.pv, "Pac");
     this.bigLineChart.allLabels = getPVLabelList(getColumn(this.pv, "Time"));
-    console.log(this.bigLineChart.allData);
-    console.log(this.bigLineChart.allLabels);
+    
+    // get power aggregate data
+    // var thisYear = (await PVService.showTotalByYear())
 
-    //get pv data for cards that represent daily Ppv total number
-    this.PpvTodayTotal = (await PVService.showTotalByDate(strDate)).data;
-    this.PpvYesterdayTotal = (
+    // get list of monthly power data
+    var monthNumberArr = getMonthNumberArr(month);
+
+    // get monthlyDataArr 
+    var monthlyDataArr = [];
+    var i;
+    for (i=0;i<monthNumberArr.length;i++){
+      var monthlyData = (await PVService.showTotalByMonth(strYear+'-'+monthNumberArr[i])).data
+      console.log("monthlyData = "+monthlyData)
+      monthlyDataArr.push(monthlyData);
+
+    }
+    
+    this.redBarChart.allData[0] = monthlyDataArr;
+    this.redBarChart.allLabels[0] = getMonthLabelArr(monthNumberArr);
+
+    // get list of last 5 yearly power data
+    // get list of yearly power data
+    var yearNumberArr = getYearNumberArr(year);
+    console.log(yearNumberArr.length);
+    // get yearlyDataArr 
+    var yearlyDataArr = [];
+    
+    for (var j=0;j<yearNumberArr.length;j++){
+      console.log("j = "+j);
+      var yearlyData = (await PVService.showTotalByYear(yearNumberArr[j])).data; 
+      yearlyDataArr.push(yearlyData);
+    }
+    console.log("yearlyDataArr = "+yearlyDataArr);
+
+    this.redBarChart.allData[1] = yearlyDataArr;
+    this.redBarChart.allLabels[1] = yearNumberArr;
+
+    //get pv data for cards that represent daily Pac total number
+    this.PacTodayTotal = (await PVService.showTotalByDate(strDate)).data;
+    this.PacYesterdayTotal = (
       await PVService.showTotalByDate(strYesterday)
     ).data;
-    this.PpvDiffTodayTotal = this.PpvYesterdayTotal - this.PpvTodayTotal;
+    this.PacDiffTodayTotal = this.PacYesterdayTotal - this.PacTodayTotal;
 
-    // get pv data for cards that represent  monthly Ppv total number
-    this.PpvMonthTotal = (await PVService.showTotalByMonth(strMonth)).data;
-    this.PpvLastMonthTotal = (
+    // get pv data for cards that represent  monthly Pac total number
+    this.PacMonthTotal = (await PVService.showTotalByMonth(strYear+'-'+strMonth)).data;
+    this.PacLastMonthTotal = (
       await PVService.showTotalByMonth(strLastMonth)
     ).data;
-    this.PpvDiffMonthTotal = this.PpvLastMonthTotal - this.PpvMonthTotal;
+    this.PacDiffMonthTotal = this.PacLastMonthTotal - this.PacMonthTotal;
 
     // get all pv data for cards that represent total number
     //this.pv = (await PVService.index()).data;
