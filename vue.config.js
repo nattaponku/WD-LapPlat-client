@@ -22,6 +22,7 @@ module.exports = {
     sourceMap: process.env.NODE_ENV !== 'production'
   },
   devServer: {
-    disableHostCheck: true
+    disableHostCheck: true,
+    port:80
   }
 };

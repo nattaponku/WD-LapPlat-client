@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary shadow border-0">
-                <div class="card-header bg-transparent pb-5">
+                <!-- <div class="card-header bg-transparent pb-5">
                     <div class="text-muted text-center mt-2 mb-3">
                         <small>Sign up with</small>
                     </div>
@@ -16,17 +16,17 @@
                             <span class="btn-inner--text">Google</span>
                         </a>
                     </div>
-                </div>
+                </div> -->
                 <div class="card-body px-lg-5 py-lg-5">
                     <div class="text-center text-muted mb-4">
-                        <small>Or sign up with credentials</small>
+                        <small>Sign up with credentials</small>
                     </div>
                     <form role="form">
 
                         <base-input class="input-group-alternative mb-3"
-                                    placeholder="Name"
+                                    placeholder="Username"
                                     addon-left-icon="ni ni-hat-3"
-                                    v-model="model.name">
+                                    v-model="model.username">
                         </base-input>
 
                         <base-input class="input-group-alternative mb-3"
@@ -42,28 +42,28 @@
                                     v-model="model.password">
                         </base-input>
 
-                        <div class="text-muted font-italic">
+                        <!-- <div class="text-muted font-italic">
                             <small>password strength: <span class="text-success font-weight-700">strong</span></small>
-                        </div>
+                        </div> -->
 
-                        <div class="row my-4">
+                        <!-- <div class="row my-4">
                             <div class="col-12">
                                 <base-checkbox class="custom-control-alternative">
                                     <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
                                 </base-checkbox>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="text-center">
-                            <base-button type="primary" class="my-4">Create account</base-button>
+                            <base-button type="primary" class="my-4" @click="createUser()">Create account</base-button>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-6">
-                    <a href="#" class="text-light">
+                    <!-- <a href="#" class="text-light">
                         <small>Forgot password?</small>
-                    </a>
+                    </a> -->
                 </div>
                 <div class="col-6 text-right">
                     <router-link to="/login" class="text-light">
@@ -71,20 +71,46 @@
                     </router-link>
                 </div>
             </div>
+            <div class="col-4 text-center">
+                <modal v-bind:show="modals.modal0">
+                <div>
+                    User {{ model.username }} have successfully created.
+                </div>
+                <template v-slot:footer>
+                    <base-button type="secondary" @click="modals.modal0 = false">Close</base-button>
+                    <!-- <base-button type="primary" @click="$router.push({name: 'login'})">Login</base-button> -->
+                </template>
+                </modal>
+            </div>
         </div>
+        
     </div>
 </template>
 <script>
+  import UserService from "@/services/UserService.js"
   export default {
     name: 'register',
     data() {
       return {
         model: {
-          name: '',
+          username: '',
           email: '',
           password: ''
+        },
+        modals: {
+            modal0: false
         }
       }
+    },
+    methods:{
+        async createUser() {
+            try {
+                await UserService.post(this.model)
+                this.$data.modals.modal0 = !this.$data.modals.modal0
+            } catch (err) {
+                console.log(err)
+            }
+        }
     }
   }
 </script>

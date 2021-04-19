@@ -285,12 +285,13 @@
       <!--Tables-->
       <div class="row mt-5">
         <div class="col-xl-12 mb-5 mb-xl-0">
+          <!-- <pv-devices-table></pv-devices-table> -->
           <page-visits-table></page-visits-table>
         </div>
       </div>
       <div class="row mt-5">
         <div class="col-xl-12">
-          <social-traffic-table></social-traffic-table>
+          <!-- <social-traffic-table></social-traffic-table> -->
         </div>
       </div>
       <!--End tables-->
@@ -359,7 +360,8 @@ import PVService from "@/services/PVService.js";
 
 // Tables
 // import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-import PageVisitsTable from "./Dashboard/PageVisitsTable";
+import PageVisitsTable from './Dashboard/PageVisitsTable.vue';
+// import PVDevicesTable from "./Dashboard/PVDevicesTable";
 
 import moment from "moment";
 
@@ -459,7 +461,8 @@ export default {
   components: {
     LineChart,
     BarChart,
-    PageVisitsTable,
+    PageVisitsTable
+    // PVDevicesTable
     // SocialTrafficTable,
   },
   data() {
@@ -560,7 +563,7 @@ export default {
       let redBarChartData = {
         datasets: [
           {
-            label: "Solar",
+            label: "Pac",
             data: this.redBarChart.allData[index],
           },
         ],
@@ -572,7 +575,7 @@ export default {
       let bigLineChartData = {
         datasets: [
           {
-            label: "Solar",
+            label: "Pac",
             data: this.bigLineChart.allData,
           },
         ],
@@ -613,15 +616,15 @@ export default {
     // this.bigLineChart.allLabels = getColumn(this.pv, "Time");
     // this.bigLineChart.allLabels = getIndexList(this.bigLineChart.allLabels);
 
-    // var today = moment("2020-10-20", "YYYY-MM-DD", true);
-    var today = moment()
+    var today = moment("2020-09-25", "YYYY-MM-DD", true);
+    // var today = moment()
     var month = today.get("month", "M") + 1;
     var year = today.get("year", "YYYY");
     var yesterday = today.clone().subtract("1", "day");
     var lastMonth = today.clone().subtract("1", "month").get("month", "M") + 1;
 
-    var strDate = today.format("YYYY-M-DD");
-    var strYesterday = yesterday.format("YYYY-M-DD");
+    var strDate = today.format("YYYY-MM-DD");
+    var strYesterday = yesterday.format("YYYY-MM-DD");
     var strMonth = String(month);
     var strLastMonth = String(lastMonth);
     var strYear = String(year);

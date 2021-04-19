@@ -9,24 +9,62 @@ export default new Vuex.Store({
     ],
     state: {
         token: null,
-        user: null,
+        username: null,
+        userStatus: null,
+        userId: null,
+        userImg: null,
         isUserLoggedIn: false,
+    },
+    getters: {
+        getState: state => {
+          return state
+        }
     },
     mutations: {
         setToken(state, token) {
             state.token = token
             state.isUserLoggedIn = !!(token)
         },
-        setUser(state, user) {
-            state.user = user
+        setUsername(state, username) {
+            state.username = username
+        },
+        setUserStatus(state, status){
+            state.userStatus = status
+        },
+        setUserID(state, id){
+            state.userID = id
+        },
+        setUserImg(state, img){
+            state.userImg = img
+        },
+        logout(state){
+            state.token = null
+            state.isUserLoggedIn = null
+            state.username = null
+            state.userStatus = null
+            state.userId = null
+            state.userImg = null
         }
     },
     actions: {
         setToken({ commit }, token) {
             commit('setToken', token)
         },
-        setUser({ commit }, user) {
-            commit('setUser', user)
+        setUsername({ commit }, username) {
+            // commit('setUser', user)
+            commit('setUsername', username)
+        },
+        setUserStatus({ commit }, status){
+            commit('setUserStatus', status)
+        },
+        setUserID({ commit }, id){
+            commit('setUserID', id)
+        },
+        setUserImg({ commit }, img){
+            commit('setUserImg', img)
+        },
+        logout({commit}){
+            commit('logout')
         }
     }
 })

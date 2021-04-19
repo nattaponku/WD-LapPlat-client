@@ -24,6 +24,7 @@
           <th>Today(kWh)</th>
           <th>This Month(kWh)</th>
           <th>Total Energy(kWh)</th>
+          <!-- <th>Last User</th> -->
         </template>
 
         <template slot-scope="{row}">
@@ -70,8 +71,9 @@
   </div>
 </template>
 <script>
+  import PVService from "@/services/PVService.js";
   export default {
-    name: 'page-visits-table',
+    name: 'pv-devices',
     data() {
       return {
         tableData: [
@@ -102,7 +104,10 @@
           
         ]
       }
-    }
+    },
+    async mounted() {
+      this.tableData = await PVService.getDate
+    } 
   }
 </script>
 <style>

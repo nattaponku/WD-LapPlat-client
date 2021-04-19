@@ -49,7 +49,7 @@ function chartOptions(Chart) {
           padding: 0
         },
         legend: {
-          display: false,
+          display: true,
           position: 'bottom',
           labels: {
             usePointStyle: true,
@@ -58,12 +58,14 @@ function chartOptions(Chart) {
         },
         elements: {
           point: {
-            radius: 0,
-            backgroundColor: colors.theme['primary']
+            radius: 3,
+            // backgroundColor: colors.theme['primary']
+            backgroundColor: colors.transparent,
+            borderColor: colors.theme['primary']
           },
           line: {
             tension: .4,
-            borderWidth: 4,
+            borderWidth: 2,
             borderColor: colors.theme['primary'],
             backgroundColor: colors.transparent,
             borderCapStyle: 'rounded'
@@ -81,6 +83,7 @@ function chartOptions(Chart) {
           enabled: true,
           mode: 'index',
           intersect: false,
+          usePointStyle: true
         }
       },
       doughnut: {
