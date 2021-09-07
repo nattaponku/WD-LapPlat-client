@@ -59,7 +59,7 @@ function chartOptions(Chart) {
         elements: {
           point: {
             radius: 3,
-            // backgroundColor: colors.theme['primary']
+            // backgroundColor: colors.theme['primary'],
             backgroundColor: colors.transparent,
             borderColor: colors.theme['primary']
           },
@@ -67,7 +67,7 @@ function chartOptions(Chart) {
             tension: .4,
             borderWidth: 2,
             borderColor: colors.theme['primary'],
-            backgroundColor: colors.transparent,
+            //backgroundColor: colors.transparent,
             borderCapStyle: 'rounded'
           },
           rectangle: {

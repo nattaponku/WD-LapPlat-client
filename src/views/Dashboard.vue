@@ -283,12 +283,13 @@
       <!-- End charts-->
 
       <!--Tables-->
-      <div class="row mt-5">
-        <div class="col-xl-12 mb-5 mb-xl-0">
+      <!-- <div class="row mt-5">
+        <div class="col-xl-12 mb-5 mb-xl-0"> -->
           <!-- <pv-devices-table></pv-devices-table> -->
-          <page-visits-table></page-visits-table>
-        </div>
-      </div>
+          <!-- temporary remove PV station table -->
+          <!-- <page-visits-table></page-visits-table> -->
+        <!-- </div>
+      </div> -->
       <div class="row mt-5">
         <div class="col-xl-12">
           <!-- <social-traffic-table></social-traffic-table> -->
@@ -297,12 +298,12 @@
       <!--End tables-->
 
       <!-- Stat cards -->
-      <div class="row">
-        <div class="col-xl-4 col-lg-4">
+      <!-- <div class="row">
+        <div class="col-xl-6 col-lg-6">
           <stats-card
-            title="CO2 Reduction"
+            title="CO2 Reduction "
             type="gradient-blue"
-            sub-title="2,356"
+            sub-title="2,356 KgCO2e"
             icon="ni ni-cloud-download-95"
             class="mb-4 mb-xl-0"
           >
@@ -346,7 +347,7 @@
             </template>
           </stats-card>
         </div>
-      </div>
+      </div> -->
       <!-- End stat cards -->
     </div>
   </div>
@@ -360,11 +361,17 @@ import PVService from "@/services/PVService.js";
 
 // Tables
 // import SocialTrafficTable from './Dashboard/SocialTrafficTable';
-import PageVisitsTable from './Dashboard/PageVisitsTable.vue';
+// import PageVisitsTable from './Dashboard/PageVisitsTable.vue';
 // import PVDevicesTable from "./Dashboard/PVDevicesTable";
 
 import moment from "moment";
 
+function get2DigitNumber(digit){
+  var monthNumber = digit;
+  var dec = monthNumber - Math.floor(monthNumber);
+  monthNumber = monthNumber - dec;
+  return ("0" + monthNumber).slice(-2) + dec.toString().substr(1);
+}
 function getPVLabelList(dataSet) {
   return dataSet.map((x) => x.substring(x.length - 8, x.length));
 }
@@ -461,7 +468,7 @@ export default {
   components: {
     LineChart,
     BarChart,
-    PageVisitsTable
+    // PageVisitsTable
     // PVDevicesTable
     // SocialTrafficTable,
   },
@@ -617,23 +624,26 @@ export default {
     // this.bigLineChart.allLabels = getIndexList(this.bigLineChart.allLabels);
 
     var today = moment("2020-09-25", "YYYY-MM-DD", true);
-    // var today = moment()
+    //var today = moment()
     var month = today.get("month", "M") + 1;
     var year = today.get("year", "YYYY");
     var yesterday = today.clone().subtract("1", "day");
     var lastMonth = today.clone().subtract("1", "month").get("month", "M") + 1;
+    var lastYear = year -1;
 
     var strDate = today.format("YYYY-MM-DD");
     var strYesterday = yesterday.format("YYYY-MM-DD");
     var strMonth = String(month);
     var strLastMonth = String(lastMonth);
     var strYear = String(year);
+    var strLastYear = String(lastYear);
 
     console.log("strDate =" + strDate);
     console.log("month =" + month);
     console.log("strYesterday =" + strYesterday);
     console.log("strLastMonth =" + strLastMonth);
     console.log("strYear =" + strYear);
+    console.log("strLastYear =" + strLastYear);
 
     // call backend for data
     this.pv = (await PVService.showByDate(strDate)).data;
@@ -647,13 +657,23 @@ export default {
 
     // get list of monthly power data
     var monthNumberArr = getMonthNumberArr(month);
+    
 
     // get monthlyDataArr 
     var monthlyDataArr = [];
     var i;
     for (i=0;i<monthNumberArr.length;i++){
-      var monthlyData = (await PVService.showTotalByMonth(strYear+'-'+monthNumberArr[i])).data
-      console.log("monthlyData = "+monthlyData)
+      
+
+      // transform 1-digit to 2-digit number
+      var formattedNumber = get2DigitNumber(monthNumberArr[i]);
+
+      // get data from Backend
+      // use last year str if month number > current month number
+      console.log('monthNumberArr['+i+']='+(monthNumberArr[i]+1)+' month = '+month)
+      var monthlyData = (monthNumberArr[i] <= month)?(await PVService.showTotalByMonth(strYear+'-'+formattedNumber)).data
+                                                   : (await PVService.showTotalByMonth((strLastYear)+'-'+formattedNumber)).data
+      console.log(strYear+'-'+formattedNumber+" = "+monthlyData)
       monthlyDataArr.push(monthlyData);
 
     }
@@ -686,7 +706,7 @@ export default {
     this.PacDiffTodayTotal = this.PacYesterdayTotal - this.PacTodayTotal;
 
     // get pv data for cards that represent  monthly Pac total number
-    this.PacMonthTotal = (await PVService.showTotalByMonth(strYear+'-'+strMonth)).data;
+    this.PacMonthTotal = (await PVService.showTotalByMonth(strYear+'-'+get2DigitNumber(strMonth))).data;
     this.PacLastMonthTotal = (
       await PVService.showTotalByMonth(strLastMonth)
     ).data;
