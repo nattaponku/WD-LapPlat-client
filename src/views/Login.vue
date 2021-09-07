@@ -25,7 +25,7 @@
           <div class="text-center text-muted mb-4">
             <small>Sign in with credentials</small>
           </div>
-          <form  role="form" >
+          <form role="form">
             <base-input
               class="input-group-alternative mb-3"
               placeholder="username"
@@ -47,11 +47,13 @@
               <span class="text-muted">Remember me</span>
             </base-checkbox>
             <div class="text-center">
-              <base-button nativeType="submit" @click="onLogin" class="my-4" >Sign in</base-button>
+              <base-button nativeType="submit" @click="onLogin" class="my-4"
+                >Sign in</base-button
+              >
             </div>
-            <div class="text-center text-muted mb-4" type="danger"  v-if="error">
-              <small>{{error}}</small>
-          </div>
+            <div class="text-center text-muted mb-4" type="danger" v-if="error">
+              <small>{{ error }}</small>
+            </div>
           </form>
         </div>
       </div>
@@ -69,10 +71,10 @@
   </div>
 </template>
 <script>
-import AuthenService from "@/services/AuthenService"
+import AuthenService from "@/services/AuthenService";
 
 export default {
-  name: 'login',
+  name: "login",
   // components: {
   //   AuthenService
   // },
@@ -85,34 +87,36 @@ export default {
   },
   methods: {
     async onLogin() {
-    //   event.preventDefault();
-    //   alert(JSON.stringify(this.username));
+      //   event.preventDefault();
+      //   alert(JSON.stringify(this.username));
       try {
         const response = await AuthenService.login({
           username: this.username,
           password: this.password,
         });
-        console.log("login token is " +response.data.token)
+        console.log("login token is " + response.data.token);
         console.log(response.data.user);
-        this.$store.dispatch("setToken", response.data.token);
-        if (response.data.token){
-          localStorage.setItem('token',JSON.stringify(response.data.token))
-        }
-        this.$store.dispatch("setUsername", response.data.user.username);
-        this.$store.dispatch("setUserStatus", response.data.user.status);
-        this.$store.dispatch("setUserID", response.data.user.id);
-        this.$store.dispatch("setUserImg", response.data.user.img);
+
+        await this.$store.dispatch("setToken", response.data.token);
+        // if (response.data.token) {
+        //   localStorage.setItem("token", JSON.stringify(response.data.token));
+        // }
+        await this.$store.dispatch("setUsername", response.data.user.username);
+        await this.$store.dispatch("setUserStatus", response.data.user.status);
+        await this.$store.dispatch("setUserID", response.data.user.id);
+        await this.$store.dispatch("setUserImg", response.data.user.img);
+
         this.$router.push({
-          name: "dashboard"
+          name: "dashboard",
         });
-      } 
-      catch (error) {
+      } catch (error) {
         this.error = error.response.data.error;
         this.username = "";
         this.password = "";
+        console.log("Login error");
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

@@ -9,7 +9,7 @@ Vue.use(Router)
 export const router =  new Router({
 // export default new Router({
   linkExactActiveClass: 'active',
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       path: '/',
@@ -27,9 +27,6 @@ export const router =  new Router({
         {
           path: '/energy',
           name: 'Energy',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
           component: () => import(/* webpackChunkName: "EGAT" */ './views/Energy.vue')
         },
         {
@@ -76,15 +73,18 @@ export const router =  new Router({
 });
 router.beforeEach((to, from, next) => {
   // // redirect to login page if not logged in and trying to access a restricted page
-  // const publicPages = ['/login', '/register'];
-  // const authRequired = !publicPages.includes(to.path);
+  const publicPages = ['/login', '/register'];
+  const authRequired = !publicPages.includes(to.path);
   
   const loggedIn = store.getters.getState.token;
-  
-  console.log("loggedIn is " + loggedIn)
-  console.log("to.name =" + to.name)
+  console.log(!!loggedIn,authRequired,from.path,to.path)
 
-  
-  if (to.name !== 'login' && !loggedIn) next({ name: "login" })
-  else next()
+  // confirm("From: "+ from.name + "\nTo: "+ to.name +"\nToken: "+loggedIn)
+  if (authRequired && !loggedIn) {
+    console.log("ERROR")
+    next({ name: "login" })
+  }
+  else {
+    next()
+  }
 })

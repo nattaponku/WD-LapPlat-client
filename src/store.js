@@ -11,7 +11,7 @@ export default new Vuex.Store({
         token: null,
         username: null,
         userStatus: null,
-        userId: null,
+        userID: null,
         userImg: null,
         isUserLoggedIn: false,
     },
@@ -42,7 +42,7 @@ export default new Vuex.Store({
             state.isUserLoggedIn = null
             state.username = null
             state.userStatus = null
-            state.userId = null
+            state.userID = null
             state.userImg = null
         }
     },

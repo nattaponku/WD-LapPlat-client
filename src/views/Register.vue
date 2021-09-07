@@ -65,11 +65,11 @@
                         <small>Forgot password?</small>
                     </a> -->
                 </div>
-                <div class="col-6 text-right">
+                <!-- <div class="col-6 text-right">
                     <router-link to="/login" class="text-light">
                         <small>Login into your account</small>
                     </router-link>
-                </div>
+                </div> -->
             </div>
             <div class="col-4 text-center">
                 <modal v-bind:show="modals.modal0">

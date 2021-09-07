@@ -23,6 +23,8 @@ module.exports = {
   },
   devServer: {
     disableHostCheck: true,
-    port:80
+    // host: 'localhost',
+    port: 80,
+    // proxy: 'http://localhost:8081'
   }
 };
