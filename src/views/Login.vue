@@ -47,7 +47,7 @@
               <span class="text-muted">Remember me</span>
             </base-checkbox>
             <div class="text-center">
-              <base-button nativeType="submit" @click="onLogin" class="my-4"
+              <base-button  @click="onLogin" class="my-4"
                 >Sign in</base-button
               >
             </div>

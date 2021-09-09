@@ -1,0 +1,19 @@
+script for deployment a production vuejs app
+1.npm run build
+2.got ./dist as a built project
+
+start server of production vuejs
+1.npm install -g serve
+2.serve -C -s dist -l tcp://<your-site>:80
+
+start backend production server
+1. cd d:/nodevue
+2. pm2 delete all
+3. pm2 start EGAT-server/src/app.js
+
+to follow log
+1.pm2 logs
+
+to monitor 
+1.pm2 monit
+

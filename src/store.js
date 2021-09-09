@@ -7,14 +7,14 @@ export default new Vuex.Store({
     plugins: [
         createPersistedState()
     ],
-    state: {
+    state: () => ({
         token: null,
         username: null,
         userStatus: null,
         userID: null,
         userImg: null,
         isUserLoggedIn: false,
-    },
+    }),
     getters: {
         getState: state => {
           return state

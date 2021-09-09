@@ -607,13 +607,6 @@ export default {
       // );
     },
   },
-  async created() {
-    try {
-      console.log("created");
-    } catch (error) {
-      console.log(error);
-    }
-  },
   async mounted() {
     //let date = getToday();
     // for testing
@@ -623,8 +616,8 @@ export default {
     // this.bigLineChart.allLabels = getColumn(this.pv, "Time");
     // this.bigLineChart.allLabels = getIndexList(this.bigLineChart.allLabels);
 
-    var today = moment("2020-09-25", "YYYY-MM-DD", true);
-    //var today = moment()
+    // var today = moment("2020-09-25", "YYYY-MM-DD", true);
+    var today = moment()
     var month = today.get("month", "M") + 1;
     var year = today.get("year", "YYYY");
     var yesterday = today.clone().subtract("1", "day");
