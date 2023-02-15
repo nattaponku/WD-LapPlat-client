@@ -1,8 +1,31 @@
 <template>
   <div>
     <base-header type="gradient-egat" class="pb-6 pb-8 pt-5 pt-md-8">
-      <!-- Card stats -->
+      <!-- Card stats 1st row-->
       <div class="row">
+        <div class="col-xl-3 col-lg-6">
+          <stats-card
+            
+            type="gradient-info"
+            
+            icon="ni ni-money-coins"
+            class="mb-4 mb-xl-0"
+          >
+
+            <!-- Card body -->
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">
+                  Serial number
+                </h5>
+                <span class="h4 font-weight-bold mb-0">{{ 
+                  
+                  "xxxx-1111-2023"
+                }}</span>
+              </div>
+            </div>
+          </stats-card>
+        </div>
         <div class="col-xl-3 col-lg-6">
           <stats-card
             
@@ -14,41 +37,13 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">
-                  Today Power
+                  Battery Operation Status
                 </h5>
-                <span class="h2 font-weight-bold mb-0">{{ 
-                  numberWithCommas(this.PacTodayTotal.toFixed(2))
+                <span class="h4 font-weight-bold mb-0">{{ 
+                 "Operating"
                 }}</span>
               </div>
             </div>
-            <template slot="footer">
-              <div v-if="this.PacYesterdayTotal > 0">
-                <div v-if="this.PacDiffTodayTotal > 0">
-                  <span class="text-success mr-2">
-                    <i class="fa fa-arrow-up"></i
-                    >{{
-                        (
-                          (this.PacDiffTodayTotal / this.PacYesterdayTotal) *
-                          100
-                        ).toFixed(2)
-                    }}%
-                  </span>
-                  <span class="text-nowrap">Since yesterday</span>
-                </div>
-                <div v-else>
-                  <span class="text-danger mr-2">
-                    <i class="fa fa-arrow-down"></i
-                    >{{
-                        (
-                          (this.PacDiffTodayTotal / this.PacYesterdayTotal) *
-                          100
-                        ).toFixed(2)
-                    }}%
-                  </span>
-                  <span class="text-nowrap">Since yesterday</span>
-                </div>
-              </div>
-            </template>
           </stats-card>
         </div>
         <div class="col-xl-3 col-lg-6">
@@ -64,43 +59,13 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">
-                  Monthly Power
+                  Charge/discharge mode
                 </h5>
-                <span class="h2 font-weight-bold mb-0">{{ 
-                  numberWithCommas((this.PacMonthTotal).toFixed(2))
+                <span class="h5 font-weight-bold mb-0">{{ 
+                  "Maximum self-consumption"
                 }}</span>
               </div>
             </div>
-            <template slot="footer">
-              <div v-if="this.PacLastMonthTotal > 0">
-                <div v-if="this.PacDiffMonthTotal > 0">
-                  <span class="text-success mr-2">
-                    <i class="fa fa-arrow-up"></i
-                    >{{
-                        (
-                          (this.PacDiffMonthTotal / this.PacLastMonthTotal) *
-                          100
-                        ).toFixed(2)
-                    }}%
-                  </span>
-                  <span class="text-nowrap">Since Last Month</span>
-                </div>
-                <div v-else>
-                  <span class="text-danger mr-2">
-                    <i class="fa fa-arrow-down"></i
-                    >{{
-                        (
-                          (this.PacDiffMonthTotal / this.PacLastMonthTotal) *
-                          100
-                        ).toFixed(2)
-                    }}%
-                  </span>
-                  <span class="text-nowrap">Since Last Month</span>
-                </div>
-              </div>
-            </template>
-
-
           </stats-card>
         </div>
         <div class="col-xl-3 col-lg-6">
@@ -116,48 +81,21 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">
-                  Today Gain
+                  Rated capacity
                 </h5>
-                <span class="h2 font-weight-bold mb-0">{{ 
-                  numberWithCommas((this.PacTodayTotal*this.PacUnitCost).toFixed(2))
+                <span class="h4 font-weight-bold mb-0">{{ 
+                  "10,000 kWh"
                 }}</span>
               </div>
             </div>
-            <template slot="footer">
-              <div v-if="this.PacYesterdayTotal > 0">
-                <div v-if="this.PacDiffTodayTotal > 0">
-                  <span class="text-success mr-2">
-                    <i class="fa fa-arrow-up"></i
-                    >{{
-                        (
-                          (this.PacDiffTodayTotal / this.PacYesterdayTotal) *
-                          100
-                        ).toFixed(2)
-                    }}%
-                  </span>
-                  <span class="text-nowrap">Since yesterday</span>
-                </div>
-                <div v-else>
-                  <span class="text-danger mr-2">
-                    <i class="fa fa-arrow-down"></i
-                    >{{
-                        (
-                          (this.PacDiffTodayTotal / this.PacYesterdayTotal) *
-                          100
-                        ).toFixed(2)
-                    }}%
-                  </span>
-                  <span class="text-nowrap">Since yesterday</span>
-                </div>
-              </div>
-            </template>
-            
-
-
-
-            
           </stats-card>
         </div>
+        
+      </div>
+
+      <br>
+      <!-- 2nd row -->
+      <div class="row">
         <div class="col-xl-3 col-lg-6">
           <stats-card
             
@@ -171,10 +109,10 @@
             <div class="row">
               <div class="col">
                 <h5 class="card-title text-uppercase text-muted mb-0">
-                  Monthly Gain
+                  Working Status
                 </h5>
-                <span class="h2 font-weight-bold mb-0">{{ 
-                  numberWithCommas((this.PacMonthTotal*this.PacUnitCost).toFixed(2))
+                <span class="h4 font-weight-bold mb-0">{{ 
+                  "Running"
                 }}</span>
               </div>
             </div>
@@ -210,20 +148,184 @@
             
           </stats-card>
         </div>
+        <div class="col-xl-3 col-lg-6">
+          <stats-card
+            
+            type="gradient-red"
+            icon="ni ni-bulb-61"
+            class="mb-4 mb-xl-0"
+          >
+            <!-- Card body -->
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">
+                  SOC
+                </h5>
+                <span class="h4 font-weight-bold mb-0">{{ 
+                  numberWithCommas(87.45)
+                }}%</span>
+              </div>
+            </div>
+           
+          </stats-card>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <stats-card
+            
+            type="gradient-orange"
+            
+            icon="ni ni-bulb-61"
+            class="mb-4 mb-xl-0"
+          >
+
+            <!-- Card body -->
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">
+                 Charge/discharge power
+                </h5>
+                <span class="h5 font-weight-bold mb-0">{{ 
+                  numberWithCommas(0.043)
+                }}kWh</span>
+              </div>
+            </div>
+            
+          </stats-card>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <stats-card
+            
+            type="gradient-green"
+            icon="ni ni-money-coins"
+            class="mb-4 mb-xl-0"
+          >
+
+
+            <!-- Card body -->
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">
+                  Internal temperature
+                </h5>
+                <span class="h4 font-weight-bold mb-0">{{ 
+                  numberWithCommas(44.9)
+                }}°C</span>
+              </div>
+            </div>
+               
+          </stats-card>
+        </div>
+        
       </div>
+      <br>
+      <!-- 3rd row -->
+      <div class="row">
+        <div class="col-xl-3 col-lg-6">
+          <stats-card
+            
+            type="gradient-info"
+            
+            icon="ni ni-money-coins"
+            class="mb-4 mb-xl-0"
+          >
+
+            <!-- Card body -->
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">
+                  Daily discharge energy
+                </h5>
+                <span class="h4 font-weight-bold mb-0">{{ 
+                  numberWithCommas(1.24)
+                }}kWh</span>
+              </div>
+            </div>
+            
+          </stats-card>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <stats-card
+            
+            type="gradient-red"
+            icon="ni ni-bulb-61"
+            class="mb-4 mb-xl-0"
+          >
+            <!-- Card body -->
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">
+                  Total discharge energy
+                </h5>
+                <span class="h4 font-weight-bold mb-0">{{ 
+                  numberWithCommas(166.371)
+                }}kWh</span>
+              </div>
+            </div>
+           
+          </stats-card>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <stats-card
+            
+            type="gradient-orange"
+            
+            icon="ni ni-bulb-61"
+            class="mb-4 mb-xl-0"
+          >
+
+            <!-- Card body -->
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">
+                 Bus voltage
+                </h5>
+                <span class="h5 font-weight-bold mb-0">{{ 
+                  numberWithCommas(492.1)
+                }}V</span>
+              </div>
+            </div>
+            
+          </stats-card>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <stats-card
+            
+            type="gradient-green"
+            icon="ni ni-money-coins"
+            class="mb-4 mb-xl-0"
+          >
+
+
+            <!-- Card body -->
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">
+                  Bus current
+                </h5>
+                <span class="h4 font-weight-bold mb-0">{{ 
+                  numberWithCommas(0.1)
+                }}A</span>
+              </div>
+            </div>
+               
+          </stats-card>
+        </div>
+        
+      </div>
+
     </base-header>
 
     <!--Charts-->
     <div class="container-fluid mt--7">
       <div class="row">
-        <div class="col-xl-7 mb-5 mb-xl-0">
+        <div class="col-xl-10 mb-10 mb-xl-10">
           <card type="default" header-classes="bg-transparent">
             <div slot="header" class="row align-items-center">
               <div class="col">
                 <h6 class="text-light text-uppercase ls-1 mb-1">
-                  Power Generation
+                  Battery power
                 </h6>
-                <h5 class="h3 text-white mb-0">Power by time</h5>
+                <h5 class="h3 text-white mb-0">Charge/Discharge Power by time</h5>
               </div>
             </div>
             <line-chart
@@ -235,7 +337,7 @@
           </card>
         </div>
 
-        <div class="col-xl-5">
+        <!-- <div class="col-xl-5">
           <card header-classes="bg-transparent">
             <div slot="header" class="row align-items-center">
               <div class="col">
@@ -278,7 +380,7 @@
               :chart-data="redBarChart.chartData"
             ></bar-chart>
           </card>
-        </div>
+        </div> -->
       </div>
       <!-- End charts-->
 
@@ -356,8 +458,48 @@
 // Charts
 import * as chartConfigs from "@/components/Charts/config";
 import LineChart from "@/components/Charts/LineChart";
-import BarChart from "@/components/Charts/BarChart";
-import PVService from "@/services/PVService.js";
+// import BarChart from "@/components/Charts/BarChart";
+import BatteryService from "@/services/BatteryService.js";
+
+// read battery data from text file while in mockup state
+// import * as readline from 'node:readline/promises';
+const fs = require("fs");
+const readline = require("readline");
+
+function getData(){
+  const streamBattery = fs.createReadStream("./charge-discharge-power.csv");
+  const reader = readline.createInterface({ input: streamBattery });
+  let data = [];
+  reader.on("line", row => {
+    // 👇 split a row string into an array
+    // then push into the data array
+    data.push(row.split(","));
+  });
+
+  reader.on("close", () => {
+    // 👇 reached the end of file
+    console.log("allData:"+this.bigLineChart.allData)
+  });
+  return data;
+}
+function getLabels(){
+  const streamTimeBattery = fs.createReadStream("./time-battery.csv");
+  const reader = readline.createInterface({ input: streamTimeBattery });
+  let data = [];
+  reader.on("line", row => {
+    // 👇 split a row string into an array
+    // then push into the data array
+    data.push(row.split(","));
+  });
+
+  reader.on("close", () => {
+    // 👇 reached the end of file
+    console.log("allLabels:"+data)
+  });
+  return data;
+}
+
+    
 
 // Tables
 // import SocialTrafficTable from './Dashboard/SocialTrafficTable';
@@ -372,13 +514,14 @@ function get2DigitNumber(digit){
   monthNumber = monthNumber - dec;
   return ("0" + monthNumber).slice(-2) + dec.toString().substr(1);
 }
-function getPVLabelList(dataSet) {
-  return dataSet.map((x) => x.substring(x.length - 8, x.length));
-}
+// comment 2 function below in mockup state
+// function getPVLabelList(dataSet) {
+//   return dataSet.map((x) => x.substring(x.length - 8, x.length));
+// }
 
-function getColumn(dataSet, propertyName) {
-  return dataSet.map((x) => x[propertyName]);
-}
+// function getColumn(dataSet, propertyName) {
+//   return dataSet.map((x) => x[propertyName]);
+// }
 
 // async function getMonthlyDataArr(monthNumberArr){
 //   var monthDataArr = [];
@@ -467,7 +610,7 @@ function getMonthLabelArr(monthArr){
 export default {
   components: {
     LineChart,
-    BarChart,
+    // BarChart,
     // PageVisitsTable
     // PVDevicesTable
     // SocialTrafficTable,
@@ -616,7 +759,7 @@ export default {
     // this.bigLineChart.allLabels = getColumn(this.pv, "Time");
     // this.bigLineChart.allLabels = getIndexList(this.bigLineChart.allLabels);
 
-    var today = moment("2020-09-25", "YYYY-MM-DD", true);
+    var today = moment("2023-02-13", "YYYY-MM-DD", true);
     // var today = moment()
     var month = today.get("month", "M") + 1;
     var year = today.get("year", "YYYY");
@@ -638,17 +781,20 @@ export default {
     console.log("strYear =" + strYear);
     console.log("strLastYear =" + strLastYear);
 
-    // call backend for data
-    this.pv = (await PVService.showByDate(strDate)).data;
+    // comment calling backend while in mockup state
+    // // call backend for data
+    // this.battery = (await BatteryService.showByDate(strDate)).data;
 
-    // get pv by date for bigLineChart
-    this.bigLineChart.allData = getColumn(this.pv, "Pac");
-    
-    this.bigLineChart.allLabels = getPVLabelList(getColumn(this.pv, "Time"));
-    
-    console.log("allData:"+this.bigLineChart.allData)
-    console.log("allLabels:"+this.bigLineChart.allLabels)
+    // // get pv by date for bigLineChart
+    // // this.bigLineChart.allData = getColumn(this.battery, "charge_discharge_power");
+    // // this.bigLineChart.allLabels = getPVLabelList(getColumn(this.battery, "timestamp"));
 
+    // read csv file while in mockup state
+    this.bigLineChart.allData = getData()
+    this.bigLineChart.allLabels = getLabels()
+    
+    
+    
     // get power aggregate data
     // var thisYear = (await PVService.showTotalByYear())
 
@@ -661,21 +807,19 @@ export default {
     var i;
     for (i=0;i<monthNumberArr.length;i++){
       
-
       // transform 1-digit to 2-digit number
       var formattedNumber = get2DigitNumber(monthNumberArr[i]);
 
       // get data from Backend
       // use last year str if month number > current month number
       console.log('monthNumberArr['+i+']='+(monthNumberArr[i]+1)+' month = '+month)
-      var monthlyData = (monthNumberArr[i] <= month)?(await PVService.showTotalByMonth(strYear+'-'+formattedNumber)).data
-                                                   : (await PVService.showTotalByMonth((strLastYear)+'-'+formattedNumber)).data
+      var monthlyData = (monthNumberArr[i] <= month)?(await BatteryService.showTotalByMonth(strYear+'-'+formattedNumber)).data
+                                                   : (await BatteryService.showTotalByMonth((strLastYear)+'-'+formattedNumber)).data
       console.log(strYear+'-'+formattedNumber+" = "+monthlyData)
       monthlyDataArr.push(monthlyData);
 
     }
-    monthlyDataArr = [30000,35000,35000,23000,40000,30000,39000,80000,50000,60000,70000,90000]
-    console.log("monthlyDataArr"+monthlyDataArr)
+   
     this.redBarChart.allData[0] = monthlyDataArr;
     this.redBarChart.allLabels[0] = getMonthLabelArr(monthNumberArr);
 
@@ -688,7 +832,7 @@ export default {
     
     for (var j=0;j<yearNumberArr.length;j++){
       console.log("j = "+j);
-      var yearlyData = (await PVService.showTotalByYear(yearNumberArr[j])).data; 
+      var yearlyData = (await BatteryService.showTotalByYear(yearNumberArr[j])).data; 
       yearlyDataArr.push(yearlyData);
     }
     console.log("yearlyDataArr = "+yearlyDataArr);
@@ -697,16 +841,16 @@ export default {
     this.redBarChart.allLabels[1] = yearNumberArr;
 
     //get pv data for cards that represent daily Pac total number
-    this.PacTodayTotal = (await PVService.showTotalByDate(strDate)).data;
+    this.PacTodayTotal = (await BatteryService.showTotalByDate(strDate)).data;
     this.PacYesterdayTotal = (
-      await PVService.showTotalByDate(strYesterday)
+      await BatteryService.showTotalByDate(strYesterday)
     ).data;
     this.PacDiffTodayTotal = this.PacYesterdayTotal - this.PacTodayTotal;
 
     // get pv data for cards that represent  monthly Pac total number
-    this.PacMonthTotal = (await PVService.showTotalByMonth(strYear+'-'+get2DigitNumber(strMonth))).data;
+    this.PacMonthTotal = (await BatteryService.showTotalByMonth(strYear+'-'+get2DigitNumber(strMonth))).data;
     this.PacLastMonthTotal = (
-      await PVService.showTotalByMonth(strLastMonth)
+      await BatteryService.showTotalByMonth(strLastMonth)
     ).data;
     this.PacDiffMonthTotal = this.PacLastMonthTotal - this.PacMonthTotal;
 

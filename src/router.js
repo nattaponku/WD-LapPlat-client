@@ -27,6 +27,15 @@ export default new Router({
           component: () => import(/* webpackChunkName: "EGAT" */ './views/Dashboard.vue')
         },
         {
+          path: '/battery',
+          name: 'battery',
+          beforeEnter : guardMyroute,
+          // route level code-splitting
+          // this generates a separate chunk (about.[hash].js) for this route
+          // which is lazy-loaded when the route is visited.
+          component: () => import(/* webpackChunkName: "EGAT" */ './views/Battery.vue')
+        },
+        {
           path: '/energy',
           name: 'Energy',
           beforeEnter : guardMyroute,

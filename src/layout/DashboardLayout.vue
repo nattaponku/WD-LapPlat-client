@@ -6,9 +6,10 @@
       title="EGAT PV Dashboard"
     >
       <template slot="links">
-        <sidebar-item :link="{name: 'Dashboard',icon: 'ni ni-tv-2 text-primary',path: '/dashboard'}"/>
+        <sidebar-item :link="{name: 'Inverter',icon: 'ni ni-tv-2 text-primary',path: '/dashboard'}"/>
+        <sidebar-item :link="{name: 'Battery', icon: 'fa fa-battery-three-quarters', path: '/battery'}"/>
         <sidebar-item :link="{name: 'Energy', icon: 'ni ni-sound-wave text-blue', path: '/energy'}"/>
-        <!-- <sidebar-item :link="{name: 'Maps', icon: 'ni ni-pin-3 text-orange', path: '/maps'}"/> -->
+
         <!-- <sidebar-item :link="{name: 'User Profile', icon: 'ni ni-single-02 text-yellow', path: '/profile'}"/> -->
         <!-- <sidebar-item :link="{name: 'Tables', icon: 'ni ni-bullet-list-67 text-red', path: '/tables'}"/> -->
         <!-- <sidebar-item :link="{name: 'Login', icon: 'ni ni-key-25 text-info', path: '/login'}"/> -->
